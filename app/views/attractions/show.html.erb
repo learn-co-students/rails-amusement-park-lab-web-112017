@@ -4,3 +4,4 @@
 <p>Tickets: <%= @attraction.tickets %></p>
 <p>Happiness Rating: <%= @attraction.happiness_rating %></p>
 <p>Height: <%= @attraction.min_height %></p>
+<%= button_to "Go on this ride", {:controller => "rides", :action => "create", :attraction_id => @attraction.id, :user_id=> session[:user_id]} %>
