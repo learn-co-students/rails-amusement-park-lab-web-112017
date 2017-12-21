@@ -1,0 +1,9 @@
+
+<%= form_for @attraction do |f| %>
+  <%= f.text_field :name, placeholder: "Name" %>
+  <%= f.number_field :tickets, placeholder: "Number of tickets"%>
+  <%= f.number_field :nausea_rating, placeholder: "Nausea Rating"%>
+  <%= f.number_field :happiness_rating, placeholder: "Happiness Rating"%>
+  <%= f.number_field :min_height, placeholder: "Minimum Height"%>
+  <%= f.submit%>
+<% end %>
