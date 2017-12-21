@@ -155,6 +155,7 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
   end
 
   it 'has a link from the user show page to the attractions index page' do
+    # byebug
     expect(page).to have_content("See attractions")
     click_link('See attractions')
   end

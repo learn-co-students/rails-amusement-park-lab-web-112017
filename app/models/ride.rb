@@ -22,5 +22,5 @@ class Ride < ApplicationRecord
     end
   end
 
-  
+
 end

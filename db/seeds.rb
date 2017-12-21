@@ -1,7 +1,3 @@
-User.destroy_all
-Attraction.destroy_all
-Ride.destroy_all
-
 20.times do
   User.create(
     name: Faker::Name.name,
@@ -9,7 +5,6 @@ Ride.destroy_all
     height: rand(1..10),
     happiness: rand(1..10),
     tickets: rand(1..10),
-    admin: true
   )
 end
 
