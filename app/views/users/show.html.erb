@@ -1,7 +1,15 @@
-<%= @user.name %>
-<%= @user.tickets %>
-<%= @user.mood %>
-<%= @user.height %>
+<% if flash[:msg] %>
+  <h1><%= flash[:msg] %></h1>
+  <%end %>
 
-<%= link_to "Edit", edit_user_path(@user) %>
+<% if @user.admin == true %>
+  <h3>ADMIN</h3>
+<%end%>
+
+<p>Name: <%= @user.name %></p>
+<p>Tickets: <%= @user.tickets %></p>
+<p>Mood: <%= @user.mood %></p>
+<p>Height: <%= @user.height %></p>
+
+<%= link_to "Edit", edit_user_path(@user) %><br>
 <%= link_to "See Attractions", attractions_path %>

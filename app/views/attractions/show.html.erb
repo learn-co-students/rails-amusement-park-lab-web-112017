@@ -4,3 +4,9 @@
 <p>Height Requirement: <%= @attraction.min_height %></p>
 <p>Nausea Rating: <%= @attraction.nausea_rating %></p>
 <p>Happiness Rating: <%= @attraction.happiness_rating %></p>
+  <% if current_user.admin == false %>
+        <%= form_for @ride do |f| %>
+        <%= f.text_field :attraction_id, type: :hidden %>
+        <%= f.submit "Ride #{@attraction.name}"%>
+        <% end %>
+  <% end %>

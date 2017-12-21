@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :authorized, only: [:new, :create]
 
   def new
   end
@@ -11,16 +12,16 @@ class SessionsController < ApplicationController
       redirect_to user_path(@user)
     else
 
-     flash[:error] = [“Username and password do not match”]
-      redirect_to login_path
+     flash[:error] = ['Username and password do not match']
+      redirect_to root_path
     end
   end
 
 
- def destroy
+   def destroy
     # when you’re logged out
     session[:user_id] = nil
     # you should also be redirected
-    redirect_to login_path
-end
+    redirect_to root_path
+  end
 end

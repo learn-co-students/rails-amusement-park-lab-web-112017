@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :show, :edit, :update, :create]
   delete "/attractions/:id", to: "attractions#destroy", as: "delete_attraction"
   get "/signup", to: "users#new", as: "signup"
-  get "/login", to: "sessions#new"
+  get "/signin", to: "sessions#new"
   post "/sessions", to: "sessions#create"
   delete "/sessions", to: "sessions#destroy"
-  root to:"attractions#index"
+  root to:"static#index"
+  resources :rides, only: [:create]
 end
