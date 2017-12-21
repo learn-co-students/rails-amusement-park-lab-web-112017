@@ -1,0 +1,15 @@
+  <table>
+    <thead><tr>Name</tr> </thead>
+    <thead><tr>Tickets</tr></thead>
+    <thead><tr>Details</tr></thead>
+<% @attractions.each do |attraction| %>
+    <tr>
+      <td><%= attraction.name %></td>
+      <td><%= attraction.tickets %></td>
+      <td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td>
+      <td><%= link_to "Edit", edit_attraction_path(attraction) %></td>
+      <td><%= link_to "Delete", delete_attraction_path(attraction), method: :delete %></td>
+    </tr>
+<% end %>
+</table>
+<%= link_to 'Create Attraction', new_attraction_path %>
