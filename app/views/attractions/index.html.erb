@@ -1,0 +1,7 @@
+<h1>Attractions</h1>
+
+<% @attractions.each do |att| %>
+  <%= link_to att.name, attraction_path(att) %><br>
+<% end %>
+
+<h3><%= link_to "Create Attraction", new_attraction_path %></h3>
