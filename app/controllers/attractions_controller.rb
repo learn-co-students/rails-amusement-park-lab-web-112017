@@ -5,7 +5,8 @@ class AttractionsController < ApplicationController
 
   def show
     @attraction = Attraction.find(params[:id])
-    @ride = Ride.new(attraction_id: @attraction.id)
+    @user = current_user
+    @ride = Ride.new(attraction_id: @attraction.id, user_id: @user.id)
   end
 
   def new

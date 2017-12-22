@@ -66,8 +66,8 @@ module LoginHelper
       password: "password",
       admin: true
     )
-    fill_in("user_name", :with => "Walt Disney")
-    fill_in("user_password", :with => "password")
+    fill_in("name", :with => "Walt Disney")
+    fill_in("password", :with => "password")
     click_button('Sign In')
   end
 

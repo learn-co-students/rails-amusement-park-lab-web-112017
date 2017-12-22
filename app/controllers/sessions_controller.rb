@@ -12,8 +12,8 @@ class SessionsController < ApplicationController
       redirect_to user_path(@user)
     else
 
-     flash[:error] = ['Username and password do not match']
-      redirect_to root_path
+      flash[:error] = ['Username and password do not match']
+      redirect_to signin_path
     end
   end
 
