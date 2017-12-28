@@ -1,23 +1,22 @@
 class UsersController < ApplicationController
-  skip_before_action :authorized, only: [:new, :create]
-  
+  skip_before_action :authorized, only: [:new, :create, :index]
+
   def index
     @users = User.all
   end
-
 
   def show
     @user = User.find(params[:id])
   end
 
-
   def new
     @user = User.new
   end
 
-
   def create
     @user = User.new(user_params)
+    @user.admin = true if params[:user][:admin] == "1"
+
     if @user.valid?
       @user.save
       session[:user_id] = @user.id
@@ -27,11 +26,9 @@ class UsersController < ApplicationController
     end
   end
 
-
   def edit
     @user = User.find(params[:id])
   end
-
 
   def update
     @user = User.find(params[:id])
@@ -44,11 +41,9 @@ class UsersController < ApplicationController
     end
   end
 
-
   private
-
-
+  
   def user_params
-    params.require(:user).permit(:name, :password, :password_confirmation, :happiness, :tickets, :height, :nausea)
+    params.require(:user).permit(:name, :password, :happiness, :tickets, :height, :nausea)
   end
 end

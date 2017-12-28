@@ -2,18 +2,16 @@ class AttractionsController < ApplicationController
 
   def index
     @attractions = Attraction.all
+    @user = current_user
   end
-
 
   def show
     @attraction = Attraction.find(params[:id])
   end
 
-
   def new
     @attraction = Attraction.new
   end
-
 
   def create
     @attraction = Attraction.new(attraction_params)
@@ -25,11 +23,9 @@ class AttractionsController < ApplicationController
     end
   end
 
-
   def edit
     @attraction = Attraction.find(params[:id])
   end
-
 
   def update
     @attraction = Attraction.find(params[:id])
@@ -42,12 +38,10 @@ class AttractionsController < ApplicationController
     end
   end
 
-
   private
-
 
   def attraction_params
     params.require(:attraction).permit(:name, :min_height)
   end
-  
+
 end

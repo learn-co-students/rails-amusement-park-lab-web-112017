@@ -1,21 +1,14 @@
 class RidesController < ApplicationController
-
-  def new
-
-  end
-
   def create
-    #
-    @user = current_user
-    #
-    # take_ride(@user, @attraction)
-    # if
-    #   #create the ride, redirect to a ride page?
-    #
-    # else
-    #   #you're too short!
-    #   redirect_to user_path(@user)
-    # end
-  end
+    @attraction = Attraction.find(params[:attraction_id])
+    @ride = Ride.new(user: current_user, attraction: @attraction)
+    # byebug
+    if @ride.take_ride.class == String
+      flash[:msg] = [@ride.take_ride]
+    else
+      flash[:msg] = ["Thanks for riding the #{@attraction.name}!"]
+    end
 
+    redirect_to user_path(current_user)
+  end
 end

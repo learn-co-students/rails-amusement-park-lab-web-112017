@@ -1,7 +1,16 @@
 <h1>Attractions</h1>
 
 <% @attractions.each do |att| %>
-  <%= link_to att.name, attraction_path(att) %><br>
+  <% if @user.admin %>
+    <%= link_to "Show #{att.name}", attraction_path(att) %>
+    <%= link_to "edit", edit_attraction_path(att) %>
+    <%= link_to "delete", attraction_path(att), method: 'delete' %>
+  <% else %>
+    <%= link_to "Go on #{att.name}", attraction_path(att) %>
+  <% end %>
+  <br>
 <% end %>
 
-<h3><%= link_to "Create Attraction", new_attraction_path %></h3>
+<% if @user.admin %>
+  <h3><%= link_to "New Attraction", new_attraction_path %></h3>
+<% end %>

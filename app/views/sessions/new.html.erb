@@ -2,9 +2,14 @@
   <p><%= flash[:error][0] %></p>
 <%end%>
 
-<h1>User Login</h1>
-<%= form_tag sessions_path do %>
-  <%= text_field_tag :name, nil, placeholder: "Name" %><br>
-  <%= password_field_tag :password, nil, placeholder: "Password" %><br><br>
+<h1>Sign In</h1>
+
+<%= form_tag signin_path do %>
+  <%= label_tag :name %>
+  <%= text_field_tag :'user[name]' %>
+
+  <%= label_tag :password %>
+  <%= password_field_tag :'user[password]' %>
+
   <%= submit_tag "Sign In" %>
 <%end%>

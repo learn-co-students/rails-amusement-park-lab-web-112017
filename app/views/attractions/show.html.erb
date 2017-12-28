@@ -1,7 +1,12 @@
 <h1><%= @attraction.name %></h1>
-<h3><%= @attraction.tickets %></h3>
-<h3><%= @attraction.nausea_rating %></h3>
-<h3><%= @attraction.happiness_rating %></h3>
-<h3><%= @attraction.min_height %></h3>
-<!-- <%= link_to "", rides_new_path%> -->
-<%= link_to "Go on this ride", rides_new_path, :method => "post" %>
+Tickets <strong><%= @attraction.tickets %></strong><br>
+Nausea Rating <strong><%= @attraction.nausea_rating %></strong><br>
+Happiness Rating <strong><%= @attraction.happiness_rating %></strong><br>
+Minimum Height <strong><%= @attraction.min_height %></strong><br>
+
+<% if current_user.admin %>
+  <%=  link_to 'Edit Attraction', edit_attraction_path(@attraction) %>
+  <%=  link_to 'delete', attraction_path(@attraction), method: 'delete' %>
+<% end %>
+<br><br>
+<%= button_to "Go on this ride", {controller: "rides", action: "create", attraction_id: @attraction.id} %>
